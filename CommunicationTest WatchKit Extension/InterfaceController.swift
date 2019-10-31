@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
 
     var seconds = 60
-//var gameTimer: Timer?
+var gameTimer: Timer?
     
     var hunger = 0
     var health = 100
@@ -65,11 +65,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
   //  gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
 //
-//    func runTimer() {
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
-//            print("hellloooo")
-//
-//    }
+    func runTimer() {
+        gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+            print("hellloooo")
+
+    }
 //
     
     
@@ -259,6 +259,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBAction func hibernateButtonPressed() {
         print("Hibernate button pressed")
+        
+        
         
         
     }
