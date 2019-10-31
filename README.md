@@ -1,63 +1,26 @@
-This example demonstrates how to do bidirectional communication between the watch and phone.
+* Diljit Singh C0744226
 
-The code is written in **Swift 4**. 
+1.this app has feature to SELECT player as POKEMON or CATERPIE
+Selected PLAYER will show on Watch with picture
 
-* If you are re-creating the code from home, you may find other functions to that are available in Swift 5.
-
-This code is tested to work on:
-
-*  XCode 9.2
-*  iPhone 8 Plus + Apple watch series 3, 42 mm
-*  iPhone deployment target 11.2
-*  watchOS deployment target 4.2
+2. you can give ANY NAME to Player by pressing 'N' Button on Watch screen
+name will be appear on label right below picture of Player
 
 
-How it works:
------
+3. Added updation but due to threads, removed Timer() and updating player HEALTH and HUNGER manually.
 
-Communication between watch and phone is performed by `WatchConnectivity`, a built in library that handles the connection and communication between the two paired devices.  
-
-WatchConnectivity has two main functions:
-
-* `WCSession.default.sendMessage(message, replyHandler)`:   This function SENDS a message to the other device
-* `session(_, didReceiveMessage, replyHandler)`:  This function RECEIVES a message from another device
+4. every time player press the 'S' BUTTON, hunger increase by 10% and when it reach to 80 or above , health start decreasing by 5%.
 
 
-You must include the appropriate function in your code to make communication happen.
+5. player will die on 0% health
 
-For example, suppose you want to send messages from PHONE -> WATCH.
+6.player cannot have more than 100% hunger and less than 0% health.
 
-* PHONE: WCSession.default.sendMessage(...):  This goes in `ViewController.swift` 
-* WATCH: session(_, didReceiveMessage, ...):  This goes in `InterfaceController.swift`
-
-If you want to send messages from WATCH --> PHONE:
-
-* PHONE: session(_, didReceiveMessage, ...):  This goes in `ViewController.swift`
-* WATCH: WCSession.default.sendMessage(...):  This goes in `InterfaceController.swift` 
+7. by pressing 'H' button , all game statistics paused and send information to Phone about status of the game.
+Player can restart game by pressing 'S' button again.
 
 
-How to view debug messages:
---------
 
-The phone and watch have separate consoles.  
-
-* When the watch app is running, you cannot see debug messages from the Phone
-* Whent he phone app is running, you cannot see debug messages from the Watch
-
-Therefore, you need to test both watch and phone separately - instructions here:
-https://docs.google.com/document/d/1pXChE-BwGNNE6JLN8CP8FaFo8LXoAsJPqNZ2j_4q5A8/edit
-
-How to make the Phone output debug messages to console
------
-
-1. Start the PHONE+WATCH emulator
-2. Wait for both apps to load 
-3. Go back to XCode
-4. Change the emulator to PHONE only (make sure the PHONE emulator you choose matches the same phone that you selected in the PHONE+WATCH emulator)
-5. Wait for the phone app to load
-6. Manually open the watch app
-7. Do whatever you need in the app. 
-8. You will be able to see the phone's debug messages in the Terminal.  
 
 
 
