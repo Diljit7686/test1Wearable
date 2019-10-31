@@ -84,7 +84,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func updateCounting(){
        // NSLog("counting..")
 
-        print("hoo")
+        print("checking updation ")
     }
 //
 //
@@ -147,9 +147,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         if WCSession.default.isReachable {
             print("Attempting to send message to phone")
-            self.messageLabel.setText("Sending msg to watch")
+          //  self.messageLabel.setText("Sending msg to watch")
             WCSession.default.sendMessage(
-                ["name" : "Pritesh"],
+                ["name" : "pokemon"],
                 replyHandler: {
                     (_ replyMessage: [String: Any]) in
                     // @TODO: Put some stuff in here to handle any responses from the PHONE
@@ -203,12 +203,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         {
             health = health-5
         }
+        else if(hunger < 80)
+        {
+           health = health + 40
+        }
+        if(health > 100)
+        {
+            health = 100
+        }
         
         if(health <= 0)
         {
-            let death = "player Died"
+            let death = "PLAYER DIED"
             health = 0
             nameLabel.setText(death)
+        
             
             
         }
@@ -250,6 +259,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBAction func hibernateButtonPressed() {
         print("Hibernate button pressed")
+        
+        
     }
     
 }
