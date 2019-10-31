@@ -65,11 +65,11 @@ var gameTimer: Timer?
   //  gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
 //
-    func runTimer() {
-        gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
-            print("hellloooo")
-
-    }
+//    func runTimer() {
+//        gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+//            print("hellloooo")
+//
+//    }
 //
     
     
@@ -193,6 +193,11 @@ var gameTimer: Timer?
         
         
         // HERE'S CODE TO INCREASE HUNGER EVERY 5 SECONDS BY 10%
+        
+//        if(hungerOutput.text == "paused")
+//        {
+//
+//        }
         hunger = hunger + 10
         if(hunger >= 100)
         {
@@ -257,12 +262,52 @@ var gameTimer: Timer?
         
     }
     
+    
     @IBAction func hibernateButtonPressed() {
         print("Hibernate button pressed")
+        let pause = "GAME PAUSED"
+        nameLabel.setText(pause)
+        outputLabel.setText(pause)
+        hungerOutput.setText(pause)
         
         
+        
+        if WCSession.default.isReachable {
+            print("app is in hibernation mode")
+            //  self.messageLabel.setText("Sending msg to watch")
+            WCSession.default.sendMessage(
+                ["Status" : "HiberNate MODE ON"],
+                replyHandler: {
+                    (_ replyMessage: [String: Any]) in
+                   
+            }, errorHandler: { (error) in
+                //@TODO: What do if you get an error
+                print("Error while sending message: \(error)")
+                self.messageLabel.setText("Error sending message")
+            })
+        }
         
         
     }
-    
+    @IBAction func restartButtonPressed() {
+        
+        if WCSession.default.isReachable {
+            print("Attempting to send message to phone")
+            //  self.messageLabel.setText("Sending msg to watch")
+            WCSession.default.sendMessage(
+                ["Status" : "Restart MODE ON"],
+                replyHandler: {
+                    (_ replyMessage: [String: Any]) in
+                    // @TODO: Put some stuff in here to handle any responses from the PHONE
+                    print("Message sent, put something here if u are expecting a reply from the phone")
+                    self.messageLabel.setText("Got reply from phone")
+            }, errorHandler: { (error) in
+                //@TODO: What do if you get an error
+                print("Error while sending message: \(error)")
+                self.messageLabel.setText("Error sending message")
+            })
+        }
+        
+        
+    }
 }

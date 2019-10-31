@@ -64,7 +64,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scheduledTimerWithTimeInterval()
+       // scheduledTimerWithTimeInterval()
         // 1. Check if phone supports WCSessions
         print("view loaded")
         if WCSession.isSupported() {
@@ -145,7 +145,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
     @IBAction func caterpieButtonPressed(_ sender: Any) {
         print("You pressed the caterpie button")
         
-        
+      //  scheduledTimerWithTimeInterval()
         
         outputLabel.insertText("\nTrying to send message to watch")
         
