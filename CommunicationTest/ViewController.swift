@@ -93,7 +93,9 @@ class ViewController: UIViewController, WCSessionDelegate  {
     }
     
     func updateCounting(){
-        NSLog("counting..")
+        
+        print("hello Diljit")
+      //  NSLog("counting..")
     }
 //khjk
     // MARK: Actions

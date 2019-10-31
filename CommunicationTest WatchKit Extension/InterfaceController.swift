@@ -12,7 +12,13 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
-    var timer = Timer()
+    
+
+    var seconds = 60
+//var gameTimer: Timer?
+    
+    var hunger = 0
+    var health = 100
     // MARK: Outlets
     // ---------------------
     @IBOutlet var messageLabel: WKInterfaceLabel!
@@ -24,6 +30,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // Label for other messages (HP:100, Hunger:0)
     @IBOutlet var outputLabel: WKInterfaceLabel!
     
+    @IBOutlet var hungerOutput: WKInterfaceLabel!
     
     
     // MARK: Delegate functions
@@ -55,13 +62,34 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         
     }
-    
+  //  gameTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
+//
+//    func runTimer() {
+//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+//            print("hellloooo")
+//
+//    }
+//
     
     
     
     
-    
+//
+//    func scheduledTimerWithTimeInterval(){
+//        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector("updateCounting"), userInfo: nil, repeats: true)
+//    }
+//
+    func updateCounting(){
+       // NSLog("counting..")
+
+        print("hoo")
+    }
+//
+//
+//
+//
     
     
     
@@ -72,15 +100,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 //        scheduledTimerWithTimeInterval()
 //    }
 //
-    func scheduledTimerWithTimeInterval(){
-        
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
-    }
     
-    func updateCounting(){
-        NSLog("counting..")
-    }
     
+     // timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+    
+    
+    
+    //timer.invalidate()
 
     
     // MARK: WatchKit Interface Controller Functions
@@ -116,6 +142,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // 2. When person presses button on watch, send a message to the phone
     @IBAction func buttonPressed() {
+        
+      
         
         if WCSession.default.isReachable {
             print("Attempting to send message to phone")
@@ -162,10 +190,62 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     @IBAction func startButtonPressed() {
         print("Start button pressed")
+        
+        
+        // HERE'S CODE TO INCREASE HUNGER EVERY 5 SECONDS BY 10%
+        hunger = hunger + 10
+        if(hunger >= 100)
+        {
+            hunger = 100
+        }
+
+        if(hunger >= 80 && hunger <= 100)
+        {
+            health = health-5
+        }
+        
+        if(health <= 0)
+        {
+            let death = "player Died"
+            health = 0
+            nameLabel.setText(death)
+            
+            
+        }
+        
+        let myString = String(hunger)
+        hungerOutput.setText(myString)
+        
+        let myStringForHealth = String(health)
+        outputLabel.setText(myStringForHealth)
+        
+        
+        
+        // UPDATE IN THE UILABEL
+//        NSString *labelstr = @"Your text for a label";
+//        urlabelname.text = [NSString stringWithFormat:@"%@%@",textfieldname.text,labelstr];
+        
+        
+      // runTimer()
+       // scheduledTimerWithTimeInterval()
+        
     }
     
     @IBAction func feedButtonPressed() {
         print("Feed button pressed")
+        
+        hunger = hunger-12
+//       // let x : Int = 42
+        if(hunger <= 0)
+        {
+          //  var newhunger =
+            hunger = 0
+        }
+        let myString = String(hunger)
+       hungerOutput.setText(myString)
+        
+        
+        
     }
     
     @IBAction func hibernateButtonPressed() {

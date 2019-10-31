@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Helvetica.ttc">
-            <string>Helvetica-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
@@ -69,11 +64,15 @@
                                 </button>
                             </items>
                         </group>
-                        <label alignment="center" text="HP: 100   Hunger: 0" id="Pt1-1p-5yN">
+                        <label width="62" height="16" alignment="left" text="HP: 100 " id="Pt1-1p-5yN">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                        </label>
+                        <label width="63" height="16" alignment="right" text="HN 100 " textAlignment="left" id="tXR-BQ-hLh">
                             <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                         </label>
                     </items>
                     <connections>
+                        <outlet property="hungerOutput" destination="tXR-BQ-hLh" id="oNW-VM-SRx"/>
                         <outlet property="messageLabel" destination="PMJ-75-bao" id="X1T-aZ-hg2"/>
                         <outlet property="nameLabel" destination="QdJ-Fj-LrR" id="HAA-SN-3Fj"/>
                         <outlet property="outputLabel" destination="Pt1-1p-5yN" id="Ojk-s6-fYf"/>
@@ -81,7 +80,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="555" y="31.5"/>
+            <point key="canvasLocation" x="555" y="30.5"/>
         </scene>
         <!--Screen2 Sample-->
         <scene sceneID="rSw-iR-0SS">
