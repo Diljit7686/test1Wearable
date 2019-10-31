@@ -74,7 +74,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
         // Dispose of any resources that can be recreated.
     }
 
-
+//khjk
     // MARK: Actions
     // -------------------
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
