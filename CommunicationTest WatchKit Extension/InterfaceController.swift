@@ -12,7 +12,7 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
-    
+    var timer = Timer()
     // MARK: Outlets
     // ---------------------
     @IBOutlet var messageLabel: WKInterfaceLabel!
@@ -57,6 +57,30 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+//
+//    override func viewDidLoad() {
+//        scheduledTimerWithTimeInterval()
+//    }
+//
+    func scheduledTimerWithTimeInterval(){
+        
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+    }
+    
+    func updateCounting(){
+        NSLog("counting..")
+    }
+    
 
     
     // MARK: WatchKit Interface Controller Functions
@@ -119,6 +143,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // MARK: Functions for Pokemon Parenting
     @IBAction func nameButtonPressed() {
         print("name button pressed")
+        
+        // 1. When person clicks on button, show them the input UI
+        let suggestedResponses = ["Albert", "Jenelle", "Pritesh", "Mohammad"]
+        presentTextInputController(withSuggestions: suggestedResponses, allowedInputMode: .plain) { (results) in
+            
+            
+            if (results != nil && results!.count > 0) {
+                // 2. write your code to process the person's response
+                let userResponse = results?.first as? String
+                self.nameLabel.setText(userResponse)
+            }
+        }
+
+        
+        
     }
 
     @IBAction func startButtonPressed() {
