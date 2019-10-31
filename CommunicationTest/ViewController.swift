@@ -123,9 +123,43 @@ class ViewController: UIViewController, WCSessionDelegate  {
     
     @IBAction func pokemonButtonPressed(_ sender: Any) {
         print("You pressed the pokemon button")
+        outputLabel.insertText("\nTrying to send message to watch")
+        
+        // 1. Try to send a message to the phone
+        if (WCSession.default.isReachable) {
+            let message = ["course": "POKEMON"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+            // output a debug message to the UI
+            outputLabel.insertText("\nyou have choosen POKEMON")
+            // output a debug message to the console
+            print("Message sent to watch")
+        }
+        else {
+            print("PHONE: Cannot reach watch")
+            outputLabel.insertText("\nCannot reach watch")
+        }
+        
     }
     @IBAction func caterpieButtonPressed(_ sender: Any) {
         print("You pressed the caterpie button")
+        
+        
+        
+        outputLabel.insertText("\nTrying to send message to watch")
+        
+        // 1. Try to send a message to the phone
+        if (WCSession.default.isReachable) {
+            let message = ["course": "CATERPIE"]
+            WCSession.default.sendMessage(message, replyHandler: nil)
+            // output a debug message to the UI
+            outputLabel.insertText("\nyou have choosen CATERPIE")
+            // output a debug message to the console
+            print("Message sent to watch")
+        }
+        else {
+            print("PHONE: Cannot reach watch")
+            outputLabel.insertText("\nCannot reach watch")
+        }
     }
     
     

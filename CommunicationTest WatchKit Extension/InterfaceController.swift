@@ -40,6 +40,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         // Message from phone comes in this format: ["course":"MADT"]
         let messageBody = message["course"] as! String
         messageLabel.setText(messageBody)
+        
+        if(messageBody == "POKEMON")
+        {
+            var image : UIImage = UIImage(named:"pikachu")!
+            pokemonImageView.setImage(image)
+        //    pokemonImageView = WKInterfaceImage?(image: image)
+        }
+        else  if(messageBody == "CATERPIE")
+        {
+            var image : UIImage = UIImage(named:"caterpie")!
+            pokemonImageView.setImage(image)
+            //    pokemonImageView = WKInterfaceImage?(image: image)
+        }
+        
     }
     
 
