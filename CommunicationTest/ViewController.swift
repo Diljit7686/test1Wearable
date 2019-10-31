@@ -11,6 +11,18 @@ import WatchConnectivity
 
 class ViewController: UIViewController, WCSessionDelegate  {
 
+    
+    
+    var timer = Timer()
+//
+//    override func viewDidLoad() {
+//        scheduledTimerWithTimeInterval()
+//    }
+//
+    
+    
+    
+    
     // MARK: Outlets
     @IBOutlet weak var outputLabel: UITextView!
     
@@ -52,7 +64,7 @@ class ViewController: UIViewController, WCSessionDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        scheduledTimerWithTimeInterval()
         // 1. Check if phone supports WCSessions
         print("view loaded")
         if WCSession.isSupported() {
@@ -74,6 +86,15 @@ class ViewController: UIViewController, WCSessionDelegate  {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func scheduledTimerWithTimeInterval(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 5 seconds
+        timer = Timer.scheduledTimer(timeInterval: 5000, target: self, selector: Selector(("updateCounting")), userInfo: nil, repeats: true)
+    }
+    
+    func updateCounting(){
+        NSLog("counting..")
+    }
 //khjk
     // MARK: Actions
     // -------------------
